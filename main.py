@@ -25,7 +25,7 @@ while scrape:
 
     driver.get(repo_url)
 
-    repos = driver.find_elements(By.CLASS_NAME, 'repo')
+    repositories = driver.find_elements(By.CLASS_NAME, 'repo')
 
     links = []
     new_links = []
@@ -56,16 +56,16 @@ while scrape:
         files_to_check = driver.find_elements(By.CLASS_NAME, 'Link--primary')
         second_links = []
 
-        for j in files_to_check:
-            if ".py" in j.text or ".ipynb" in j.text:
-                second_links.append(j.text)
+        for file in files_to_check:
+            if ".py" in file.text or ".ipynb" in file.text or ".js" in file.text:
+                second_links.append(file.text)
 
         for link2 in second_links:
             new_page = f"{page}/blob/master/{link2}"
             find_raw(new_page)
 
-    for i in repos:
-        links.append(i.text)
+    for repo in repositories:
+        links.append(repo.text)
 
     for link in links:
         next_page = f"{repo_url}/{link}"
