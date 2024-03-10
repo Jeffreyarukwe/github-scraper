@@ -1,6 +1,4 @@
-# Project Title
-
-GitHub Security Scanner
+# GitHub Security Scanner
 
 ## Overview
 
